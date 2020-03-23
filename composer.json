@@ -1,0 +1,23 @@
+{
+    "name": "augustash/module-cookie-consent",
+    "description": "A Magento 2 implementation of Osano Cookie Consent.",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": "MIT",
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "augustash/module-backend": "*",
+        "magento/framework": "*"
+    },
+    "autoload": {
+        "files": [
+            "src/registration.php"
+        ],
+        "psr-4": {
+            "Augustash\\CookieConsent\\": "src/"
+        }
+    }
+}
+

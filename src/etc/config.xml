@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Cookie Consent Module
+ *
+ * @author    Peter McWilliams <pmcwilliams@augustash.com>
+ * @copyright Copyright (c) 2020 August Ash (https://www.augustash.com)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <cookie_consent>
+            <general>
+                <enabled>0</enabled>
+                <message>This website uses cookies to ensure you get the best experience on our website.</message>
+                <button_text>Got it!</button_text>
+            </general>
+            <theme>
+                <banner_color>#252e39</banner_color>
+                <banner_text_color>#ffffff</banner_text_color>
+                <button_color>#14a7d0</button_color>
+                <button_text_color>#ffffff</button_text_color>
+            </theme>
+        </cookie_consent>
+    </default>
+</config>

@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * Cookie Consent Module
+ *
+ * @author    Peter McWilliams <pmcwilliams@augustash.com>
+ * @copyright Copyright (c) 2020 August Ash (https://www.augustash.com)
+ */
+
+/**
+ * @var \Augustash\CookieConsent\Block\Banner $block
+ */
+?>
+<?php if ($block->isEnabled()) : ?>
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+    <script>
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "<?= $block->escapeHtml($block->getBannerColor()) ?>",
+                    "text": "<?= $block->escapeHtml($block->getBannerTextColor()) ?>"
+                },
+                "button": {
+                    "background": "<?= $block->escapeHtml($block->getButtonColor()) ?>",
+                    "text": "<?= $block->escapeHtml($block->getButtonTextColor()) ?>"
+                }
+            },
+            "theme": "classic",
+            "position": "bottom-left",
+            "showLink": false,
+            "content": {
+                "message": "<?= $block->escapeJsQuote($block->getMessage()) ?>",
+                "dismiss": "<?= $block->escapeJsQuote($block->getButtonText()) ?>"
+            },
+            "cookie": {
+                "domain": "",
+                "secure": true
+            }
+        });
+    </script>
+<?php endif; ?>

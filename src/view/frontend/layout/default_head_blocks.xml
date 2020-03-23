@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Cookie Consent Module
+ *
+ * @author    Peter McWilliams <pmcwilliams@augustash.com>
+ * @copyright Copyright (c) 2020 August Ash (https://www.augustash.com)
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <link rel="stylesheet" type="text/css" src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" src_type="url" />
+    </head>
+</page>
