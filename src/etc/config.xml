@@ -14,7 +14,14 @@
                 <enabled>0</enabled>
                 <message>This website uses cookies to ensure you get the best experience on our website.</message>
                 <button_text>Got it!</button_text>
+                <use_transition>1</use_transition>
             </general>
+            <cookie>
+                <name>cookieconsent_status</name>
+                <path>/</path>
+                <expiry>365</expiry>
+                <secure>false</secure>
+            </cookie>
             <theme>
                 <banner_color>#252e39</banner_color>
                 <banner_text_color>#ffffff</banner_text_color>

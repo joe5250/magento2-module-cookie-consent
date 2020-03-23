@@ -78,17 +78,6 @@ class Banner extends Template
     }
 
     /**
-     * Returns the configured cookie domain value.
-     *
-     * @return string
-     */
-    public function getDomain(): string
-    {
-        return $this->getConfig()
-            ->getDomain('store', $this->storeCode);
-    }
-
-    /**
      * Returns the configured message value.
      *
      * @return string|null
@@ -108,6 +97,72 @@ class Banner extends Template
     {
         return $this->getConfig()
             ->getButtonText('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured use transition value.
+     *
+     * @return bool
+     */
+    public function hasTransition(): bool
+    {
+        return $this->getConfig()
+            ->hasTransition('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured cookie name value.
+     *
+     * @return string
+     */
+    public function getCookieName(): string
+    {
+        return $this->getConfig()
+            ->getCookieName('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured cookie path value.
+     *
+     * @return string
+     */
+    public function getCookiePath(): string
+    {
+        return $this->getConfig()
+            ->getCookiePath('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured cookie domain value.
+     *
+     * @return string
+     */
+    public function getCookieDomain(): string
+    {
+        return $this->getConfig()
+            ->getCookieDomain('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured cookie expiry in days value.
+     *
+     * @return int
+     */
+    public function getCookieExpiry(): int
+    {
+        return $this->getConfig()
+            ->getCookieExpiry('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured cookie secure value.
+     *
+     * @return string
+     */
+    public function isCookieSecure(): string
+    {
+        return $this->getConfig()->isCookieSecure('store', $this->storeCode)
+            ? 'true' : 'false';
     }
 
     /**

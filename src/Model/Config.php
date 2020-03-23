@@ -68,22 +68,6 @@ class Config implements ConfigInterface
     /**
      * {@inheritdoc}
      */
-    public function getDomain(
-        $scope = ScopeInterface::SCOPE_STORES,
-        $scopeCode = null
-    ): string {
-        $domain = $this->scopeConfig->getValue(
-            self::XML_PATH_COOKIE_CONSENT_COOKIE_DOMAIN,
-            $scope,
-            $scopeCode
-        );
-
-        return $domain ?? '';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getMessage(
         $scope = ScopeInterface::SCOPE_STORES,
         $scopeCode = null
@@ -104,6 +88,98 @@ class Config implements ConfigInterface
     ): ?string {
         return $this->scopeConfig->getValue(
             self::XML_PATH_COOKIE_CONSENT_BUTTON_TEXT,
+            $scope,
+            $scopeCode
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasTransition(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): bool {
+        return (bool) $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_USE_TRANSITIONS,
+            $scope,
+            $scopeCode
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCookieName(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string {
+        $name = $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_COOKIE_NAME,
+            $scope,
+            $scopeCode
+        );
+
+        return $name ?? 'cookieconsent_status';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCookiePath(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string {
+        $path = $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_COOKIE_PATH,
+            $scope,
+            $scopeCode
+        );
+
+        return $path ?? '/';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCookieDomain(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string {
+        $domain = $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_COOKIE_DOMAIN,
+            $scope,
+            $scopeCode
+        );
+
+        return $domain ?? '';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCookieExpiry(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): int {
+        $days = $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_COOKIE_EXPIRY,
+            $scope,
+            $scopeCode
+        );
+
+        return (int) $days ?? 365;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isCookieSecure(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): bool {
+        return (bool) $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_COOKIE_SECURE,
             $scope,
             $scopeCode
         );

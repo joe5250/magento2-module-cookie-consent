@@ -14,6 +14,9 @@
 <?php if ($block->isEnabled()) : ?>
     <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
     <script>
+        <?php if ($block->hasTransition() === false) : ?>
+            window.cookieconsent.hasTransition = false;
+        <?php endif; ?>
         window.cookieconsent.initialise({
             "palette": {
                 "popup": {
@@ -33,8 +36,11 @@
                 "dismiss": "<?= $block->escapeJsQuote($block->getButtonText()) ?>"
             },
             "cookie": {
-                "domain": "",
-                "secure": true
+                "name": "<?= $block->escapeJsQuote($block->getCookieName()) ?>",
+                "path": "<?= $block->escapeJsQuote($block->getCookiePath()) ?>",
+                "domain": "<?= $block->escapeJsQuote($block->getCookieDomain()) ?>",
+                "expiry": <?= $block->escapeJsQuote($block->getCookieExpiry()) ?>,
+                "secure": <?= $block->escapeJsQuote($block->isCookieSecure()) ?>
             }
         });
     </script>
