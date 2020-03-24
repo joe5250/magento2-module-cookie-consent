@@ -15,9 +15,13 @@
                 <use_transition>1</use_transition>
                 <position>bottom</position>
                 <layout>block</layout>
+            </general>
+            <custom_text>
                 <message>This website uses cookies to ensure you get the best experience on our website.</message>
                 <button_text>Got it!</button_text>
-            </general>
+                <include_link>0</include_link>
+                <link_text>Learn more</link_text>
+            </custom_text>
             <cookie>
                 <name>cookieconsent_status</name>
                 <path>/</path>

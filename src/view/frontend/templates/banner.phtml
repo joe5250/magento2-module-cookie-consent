@@ -31,10 +31,17 @@
             "theme": "<?= $block->escapeJsQuote($block->getLayout()) ?>",
             "position": "<?= $block->escapeJsQuote($block->getPosition()) ?>",
             "static": <?= $block->escapeJsQuote($block->isStatic()) ?>,
+        <?php if ($block->showLink()): ?>
+            "showLink": true,
+        <?php else: ?>
             "showLink": false,
+        <?php endif; ?>
             "content": {
-                "message": "<?= $block->escapeJsQuote($block->getMessage()) ?>",
-                "dismiss": "<?= $block->escapeJsQuote($block->getButtonText()) ?>"
+                "dismiss": "<?= $block->escapeJsQuote($block->getButtonText()) ?>",
+            <?php if ($block->showLink() && $block->getLinkText()): ?>
+                "link": "<?= $block->escapeJsQuote($block->getLinkText()) ?>",
+            <?php endif; ?>
+                "message": "<?= $block->escapeJsQuote($block->getMessage()) ?>"
             },
             "cookie": {
                 "name": "<?= $block->escapeJsQuote($block->getCookieName()) ?>",

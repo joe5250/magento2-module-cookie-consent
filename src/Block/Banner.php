@@ -146,6 +146,28 @@ class Banner extends Template
     }
 
     /**
+     * Returns the configured show link value.
+     *
+     * @return bool
+     */
+    public function showLink(): bool
+    {
+        return $this->getConfig()
+            ->showLink('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured link text value.
+     *
+     * @return string|null
+     */
+    public function getLinkText(): ?string
+    {
+        return $this->getConfig()
+            ->getLinkText('store', $this->storeCode);
+    }
+
+    /**
      * Returns the configured cookie name value.
      *
      * @return string

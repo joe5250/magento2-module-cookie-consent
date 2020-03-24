@@ -24,8 +24,10 @@ interface ConfigInterface
     const XML_PATH_COOKIE_CONSENT_USE_TRANSITIONS = 'cookie_consent/general/use_transition';
     const XML_PATH_COOKIE_CONSENT_POSITION = 'cookie_consent/general/position';
     const XML_PATH_COOKIE_CONSENT_LAYOUT = 'cookie_consent/general/layout';
-    const XML_PATH_COOKIE_CONSENT_MESSAGE = 'cookie_consent/general/message';
-    const XML_PATH_COOKIE_CONSENT_BUTTON_TEXT = 'cookie_consent/general/button_text';
+    const XML_PATH_COOKIE_CONSENT_MESSAGE = 'cookie_consent/custom_text/message';
+    const XML_PATH_COOKIE_CONSENT_BUTTON_TEXT = 'cookie_consent/custom_text/button_text';
+    const XML_PATH_COOKIE_CONSENT_INCLUDE_LINK = 'cookie_consent/custom_text/include_link';
+    const XML_PATH_COOKIE_CONSENT_LINK_TEXT = 'cookie_consent/custom_text/link_text';
     const XML_PATH_COOKIE_CONSENT_COOKIE_NAME = 'cookie_consent/cookie/name';
     const XML_PATH_COOKIE_CONSENT_COOKIE_PATH = 'cookie_consent/cookie/path';
     const XML_PATH_COOKIE_CONSENT_COOKIE_DOMAIN = 'cookie_consent/cookie/domain';
@@ -116,6 +118,29 @@ interface ConfigInterface
      * @return string|null
      */
     public function getButtonText(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): ?string;
+
+    /**
+     * Retrieves the module's show link status.
+     *
+     * @param int|string|\Magento\Store\Model\Store $store
+     * @return bool
+     */
+    public function showLink(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): bool;
+
+    /**
+     * Returns the configured link text value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return string|null
+     */
+    public function getLinkText(
         $scope = ScopeInterface::SCOPE_STORES,
         $scopeCode = null
     ): ?string;

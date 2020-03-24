@@ -142,6 +142,34 @@ class Config implements ConfigInterface
     /**
      * {@inheritdoc}
      */
+    public function showLink(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): bool {
+        return (bool) $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_INCLUDE_LINK,
+            $scope,
+            $scopeCode
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLinkText(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): ?string {
+        return $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_LINK_TEXT,
+            $scope,
+            $scopeCode
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getCookieName(
         $scope = ScopeInterface::SCOPE_STORES,
         $scopeCode = null
