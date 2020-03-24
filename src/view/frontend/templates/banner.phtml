@@ -32,7 +32,7 @@
             "position": "<?= $block->escapeJsQuote($block->getPosition()) ?>",
             "type": "<?= $block->escapeJsQuote($block->getComplianceType()) ?>",
             "static": <?= $block->escapeJsQuote($block->isStatic()) ?>,
-            "showLink": "<?= $block->escapeJsQuote($block->showLink()) ?>",
+            "showLink": <?= $block->escapeJsQuote($block->showLink()) ?>,
             "content": {
                 "dismiss": "<?= $block->escapeJsQuote($block->getButtonText()) ?>",
             <?php if ($block->showLink() == 'true' && $block->getLinkText()): ?>
