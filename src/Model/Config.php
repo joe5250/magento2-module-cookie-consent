@@ -186,6 +186,22 @@ class Config implements ConfigInterface
     /**
      * {@inheritdoc}
      */
+    public function getCmsPage(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): ?int {
+        $page = $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_CMS_PAGE,
+            $scope,
+            $scopeCode
+        );
+
+        return ($page !== null && $page != 0) ? $page : null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getCookieName(
         $scope = ScopeInterface::SCOPE_STORES,
         $scopeCode = null

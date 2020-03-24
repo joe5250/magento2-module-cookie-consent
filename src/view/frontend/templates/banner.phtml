@@ -35,9 +35,12 @@
             "showLink": <?= $block->escapeJsQuote($block->showLink()) ?>,
             "content": {
                 "dismiss": "<?= $block->escapeJsQuote($block->getButtonText()) ?>",
-            <?php if ($block->showLink() == 'true' && $block->getLinkText()): ?>
+                <?php if ($block->getCmsUrl()) : ?>
+                "href": "<?= $block->escapeJsQuote($block->getCmsUrl()) ?>",
+                <?php endif; ?>
+                <?php if ($block->showLink() == 'true' && $block->getLinkText()) : ?>
                 "link": "<?= $block->escapeJsQuote($block->getLinkText()) ?>",
-            <?php endif; ?>
+                <?php endif; ?>
                 "message": "<?= $block->escapeJsQuote($block->getMessage()) ?>"
             },
             "cookie": {

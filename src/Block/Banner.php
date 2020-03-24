@@ -10,6 +10,7 @@
 namespace Augustash\CookieConsent\Block;
 
 use Augustash\CookieConsent\Api\ConfigInterface;
+use Magento\Cms\Helper\Page as PageHelper;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 
@@ -38,20 +39,30 @@ class Banner extends Template
     protected $config;
 
     /**
+     * Cms page
+     *
+     * @var \Magento\Cms\Helper\Page
+     */
+    protected $cmsPageHelper;
+
+    /**
      * Constructor.
      *
      * Initialize class dependencies.
      *
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Augustash\CookieConsent\Api\ConfigInterface $config
+     * @param \Magento\Cms\Helper\Page $cmsPageHelper
      * @param array $data
      */
     public function __construct(
         Context $context,
         ConfigInterface $config,
+        PageHelper $cmsPageHelper,
         array $data = []
     ) {
         $this->config = $config;
+        $this->cmsPageHelper = $cmsPageHelper;
         $this->storeCode = $data['store_code'] ?? null;
         parent::__construct($context, $data);
     }
@@ -176,6 +187,21 @@ class Banner extends Template
     {
         return $this->getConfig()
             ->getLinkText('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured link text value.
+     *
+     * @return string|null
+     */
+    public function getCmsUrl(): ?string
+    {
+        $pageId = $this->getConfig()->getCmsPage('store', $this->storeCode);
+        if (!$pageId) {
+            return null;
+        }
+
+        return $this->cmsPageHelper->getPageUrl($pageId);
     }
 
     /**

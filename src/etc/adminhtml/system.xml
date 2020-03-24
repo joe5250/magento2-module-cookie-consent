@@ -55,6 +55,15 @@
                         <field id="cookie_consent/custom_text/include_link">1</field>
                     </depends>
                 </field>
+                <field id="cms_page" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Select CMS Page</label>
+                    <source_model>Augustash\CookieConsent\Model\Config\Source\CmsPage</source_model>
+                    <can_be_empty>1</can_be_empty>
+                    <comment><![CDATA[If a page is selected, it will override the default URL.]]></comment>
+                    <depends>
+                        <field id="cookie_consent/custom_text/include_link">1</field>
+                    </depends>
+                </field>
             </group>
             <group id="cookie" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Cookie Options</label>
