@@ -16,7 +16,7 @@ Install the extension files directly into the project source:
 
 ```bash
 mkdir -p app/code/Augustash/CookieConsent/
-curl -Ss https://github.com/augustash/magento2-module-cookie-consent/archive/1.0.0.tar.gz | tar xf - --strip 1 -C app/code/Augustash/CookieConsent/
+curl -Ss https://github.com/augustash/magento2-module-cookie-consent/archive/1.0.1.tar.gz | tar xf - --strip 1 -C app/code/Augustash/CookieConsent/
 bin/magento module:enable --clear-static-content Augustash_CookieConsent
 bin/magento setup:upgrade
 bin/magento cache:flush
@@ -28,7 +28,7 @@ Install the extension using Composer using our development package repository:
 
 ```bash
 composer config repositories.augustash composer https://packages.augustash.com/repo/private
-composer require augustash/module-cookie-consent:~1.0.0
+composer require augustash/module-cookie-consent:~1.0.1
 bin/magento module:enable --clear-static-content Augustash_CookieConsent
 bin/magento setup:upgrade
 bin/magento cache:flush
