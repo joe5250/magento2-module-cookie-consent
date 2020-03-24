@@ -19,31 +19,69 @@
                     <label>Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="message" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="use_transition" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Use Animations</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="position" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Position</label>
+                    <source_model>Augustash\CookieConsent\Model\Config\Source\Position</source_model>
+                </field>
+                <field id="layout" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Layout</label>
+                    <source_model>Augustash\CookieConsent\Model\Config\Source\Layout</source_model>
+                </field>
+                <field id="compliance_type" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Compliance Type</label>
+                    <source_model>Augustash\CookieConsent\Model\Config\Source\Compliance</source_model>
+                </field>
+            </group>
+            <group id="custom_text" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Custom Text</label>
+                <field id="message" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Message</label>
                 </field>
-                <field id="button_text" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="button_text" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Button Text</label>
                 </field>
-                <!-- <field id="message" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="include_link" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Include Link</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If enabled, the message will include a link to https://www.cookiesandyou.com.]]></comment>
+                </field>
+                <field id="link_text" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Link Text</label>
-                </field> -->
-            </group>
-            <group id="cookie" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Cookie</label>
-                <field id="domain" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Domain</label>
-                    <comment><![CDATA[The domain that the cookie 'name' belongs to. The cookie can only be read on this domain.]]></comment>
+                    <depends>
+                        <field id="cookie_consent/custom_text/include_link">1</field>
+                    </depends>
                 </field>
             </group>
-            <group id="theme" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="cookie" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cookie Options</label>
+                <field id="name" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Cookie Name</label>
+                    <comment><![CDATA[Name of the cookie that keeps track of users choice.]]></comment>
+                </field>
+                <field id="path" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Cookie Path</label>
+                    <comment><![CDATA[URL path that the cookie ‘name’ belongs to. The cookie can only be read at this location.]]></comment>
+                </field>
+                <field id="domain" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Cookie Domain</label>
+                    <comment><![CDATA[The domain that the cookie 'name' belongs to. The cookie can only be read on this domain.]]></comment>
+                </field>
+                <field id="expiry" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Cookie Expiry Days</label>
+                    <comment><![CDATA[The cookies expire date, specified in days (specify -1 for no expiry).]]></comment>
+                </field>
+                <field id="secure" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Cookie is Secure</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If secure is true, the cookies will only be allowed over https.]]></comment>
+                </field>
+            </group>
+            <group id="theme" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Theme</label>
-                <!--
-                    Add field for position: banner bottom, banner top, banner top (pushdown), floating left, floating right
-                    Add field for layout: block, classic, edgeless, wire
-                    Add field for learn more: link to cookiesandyou.com, custom CMS page
-                    Add field for compliance type: just tell, opt out, opt in
-                -->
                 <field id="banner_color" translate="label" sortOrder="20" type="text" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Banner Color</label>
                     <frontend_model>Augustash\CookieConsent\Block\Adminhtml\System\Config\Color</frontend_model>

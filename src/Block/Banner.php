@@ -78,14 +78,60 @@ class Banner extends Template
     }
 
     /**
-     * Returns the configured cookie domain value.
+     * Returns the configured use transition value.
+     *
+     * @return bool
+     */
+    public function hasTransition(): bool
+    {
+        return $this->getConfig()
+            ->hasTransition('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured position value.
      *
      * @return string
      */
-    public function getDomain(): string
+    public function getPosition(): string
+    {
+        $position = $this->getConfig()->getPosition('store', $this->storeCode);
+
+        return ($position != 'top-static') ? $position : 'top';
+    }
+
+    /**
+     * Returns the configured layout value.
+     *
+     * @return string
+     */
+    public function getLayout(): string
     {
         return $this->getConfig()
-            ->getDomain('store', $this->storeCode);
+            ->getLayout('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured compliance value.
+     *
+     * @return string
+     */
+    public function getComplianceType(): string
+    {
+        return $this->getConfig()
+            ->getComplianceType('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the static value.
+     *
+     * @return string
+     */
+    public function isStatic(): string
+    {
+        $position = $this->getConfig()->getPosition('store', $this->storeCode);
+
+        return ($position != 'top-static') ? 'false' : 'true';
     }
 
     /**
@@ -108,6 +154,83 @@ class Banner extends Template
     {
         return $this->getConfig()
             ->getButtonText('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured show link value.
+     *
+     * @return string
+     */
+    public function showLink(): string
+    {
+        return ($this->getConfig()->showLink('store', $this->storeCode))
+            ? 'true' : 'false';
+    }
+
+    /**
+     * Returns the configured link text value.
+     *
+     * @return string|null
+     */
+    public function getLinkText(): ?string
+    {
+        return $this->getConfig()
+            ->getLinkText('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured cookie name value.
+     *
+     * @return string
+     */
+    public function getCookieName(): string
+    {
+        return $this->getConfig()
+            ->getCookieName('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured cookie path value.
+     *
+     * @return string
+     */
+    public function getCookiePath(): string
+    {
+        return $this->getConfig()
+            ->getCookiePath('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured cookie domain value.
+     *
+     * @return string
+     */
+    public function getCookieDomain(): string
+    {
+        return $this->getConfig()
+            ->getCookieDomain('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured cookie expiry in days value.
+     *
+     * @return int
+     */
+    public function getCookieExpiry(): int
+    {
+        return $this->getConfig()
+            ->getCookieExpiry('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured cookie secure value.
+     *
+     * @return string
+     */
+    public function isCookieSecure(): string
+    {
+        return $this->getConfig()->isCookieSecure('store', $this->storeCode)
+            ? 'true' : 'false';
     }
 
     /**

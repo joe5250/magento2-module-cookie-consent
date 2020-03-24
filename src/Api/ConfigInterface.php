@@ -21,9 +21,19 @@ interface ConfigInterface
      * Configuration constants.
      */
     const XML_PATH_COOKIE_CONSENT_ENABLED = 'cookie_consent/general/enabled';
-    const XML_PATH_COOKIE_CONSENT_MESSAGE = 'cookie_consent/general/message';
-    const XML_PATH_COOKIE_CONSENT_BUTTON_TEXT = 'cookie_consent/general/button_text';
+    const XML_PATH_COOKIE_CONSENT_USE_TRANSITIONS = 'cookie_consent/general/use_transition';
+    const XML_PATH_COOKIE_CONSENT_POSITION = 'cookie_consent/general/position';
+    const XML_PATH_COOKIE_CONSENT_LAYOUT = 'cookie_consent/general/layout';
+    const XML_PATH_COOKIE_CONSENT_COMPLIANCE_TYPE = 'cookie_consent/general/compliance_type';
+    const XML_PATH_COOKIE_CONSENT_MESSAGE = 'cookie_consent/custom_text/message';
+    const XML_PATH_COOKIE_CONSENT_BUTTON_TEXT = 'cookie_consent/custom_text/button_text';
+    const XML_PATH_COOKIE_CONSENT_INCLUDE_LINK = 'cookie_consent/custom_text/include_link';
+    const XML_PATH_COOKIE_CONSENT_LINK_TEXT = 'cookie_consent/custom_text/link_text';
+    const XML_PATH_COOKIE_CONSENT_COOKIE_NAME = 'cookie_consent/cookie/name';
+    const XML_PATH_COOKIE_CONSENT_COOKIE_PATH = 'cookie_consent/cookie/path';
     const XML_PATH_COOKIE_CONSENT_COOKIE_DOMAIN = 'cookie_consent/cookie/domain';
+    const XML_PATH_COOKIE_CONSENT_COOKIE_EXPIRY = 'cookie_consent/cookie/expiry';
+    const XML_PATH_COOKIE_CONSENT_COOKIE_SECURE = 'cookie_consent/cookie/secure';
     const XML_PATH_COOKIE_CONSENT_BANNER_COLOR = 'cookie_consent/theme/banner_color';
     const XML_PATH_COOKIE_CONSENT_BANNER_TEXT_COLOR = 'cookie_consent/theme/banner_text_color';
     const XML_PATH_COOKIE_CONSENT_BUTTON_COLOR = 'cookie_consent/theme/button_color';
@@ -55,13 +65,48 @@ interface ConfigInterface
     ): bool;
 
     /**
-     * Returns the configured cookie domain value.
+     * Retrieves the module's use transition status.
+     *
+     * @param int|string|\Magento\Store\Model\Store $store
+     * @return bool
+     */
+    public function hasTransition(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): bool;
+
+    /**
+     * Returns the configured position value.
      *
      * @param string $scope
      * @param null|string|\Magento\Store\Model\Store $scopeCode
-     * @return string
+     * @return string|null
      */
-    public function getDomain(
+    public function getPosition(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string;
+
+    /**
+     * Returns the configured layout value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return string|null
+     */
+    public function getLayout(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string;
+
+    /**
+     * Returns the configured compliance type value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return string|null
+     */
+    public function getComplianceType(
         $scope = ScopeInterface::SCOPE_STORES,
         $scopeCode = null
     ): string;
@@ -89,6 +134,89 @@ interface ConfigInterface
         $scope = ScopeInterface::SCOPE_STORES,
         $scopeCode = null
     ): ?string;
+
+    /**
+     * Retrieves the module's show link status.
+     *
+     * @param int|string|\Magento\Store\Model\Store $store
+     * @return bool
+     */
+    public function showLink(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): bool;
+
+    /**
+     * Returns the configured link text value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return string|null
+     */
+    public function getLinkText(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): ?string;
+
+    /**
+     * Returns the configured cookie name value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return string
+     */
+    public function getCookieName(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string;
+
+    /**
+     * Returns the configured cookie path value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return string
+     */
+    public function getCookiePath(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string;
+
+    /**
+     * Returns the configured cookie domain value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return string
+     */
+    public function getCookieDomain(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string;
+
+    /**
+     * Returns the configured cookie expiry in days value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return int
+     */
+    public function getCookieExpiry(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): int;
+
+    /**
+     * Returns the configured cookie secure value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return bool
+     */
+    public function isCookieSecure(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): bool;
 
     /**
      * Returns the configured banner color value.

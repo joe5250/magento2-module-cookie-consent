@@ -12,9 +12,23 @@
         <cookie_consent>
             <general>
                 <enabled>0</enabled>
+                <use_transition>1</use_transition>
+                <position>bottom</position>
+                <layout>block</layout>
+                <compliance_type>info</compliance_type>
+            </general>
+            <custom_text>
                 <message>This website uses cookies to ensure you get the best experience on our website.</message>
                 <button_text>Got it!</button_text>
-            </general>
+                <include_link>0</include_link>
+                <link_text>Learn more</link_text>
+            </custom_text>
+            <cookie>
+                <name>cookieconsent_status</name>
+                <path>/</path>
+                <expiry>365</expiry>
+                <secure>false</secure>
+            </cookie>
             <theme>
                 <banner_color>#252e39</banner_color>
                 <banner_text_color>#ffffff</banner_text_color>

@@ -14,6 +14,9 @@
 <?php if ($block->isEnabled()) : ?>
     <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
     <script>
+        <?php if ($block->hasTransition() === false) : ?>
+            window.cookieconsent.hasTransition = false;
+        <?php endif; ?>
         window.cookieconsent.initialise({
             "palette": {
                 "popup": {
@@ -25,16 +28,24 @@
                     "text": "<?= $block->escapeHtml($block->getButtonTextColor()) ?>"
                 }
             },
-            "theme": "classic",
-            "position": "bottom-left",
-            "showLink": false,
+            "theme": "<?= $block->escapeJsQuote($block->getLayout()) ?>",
+            "position": "<?= $block->escapeJsQuote($block->getPosition()) ?>",
+            "type": "<?= $block->escapeJsQuote($block->getComplianceType()) ?>",
+            "static": <?= $block->escapeJsQuote($block->isStatic()) ?>,
+            "showLink": <?= $block->escapeJsQuote($block->showLink()) ?>,
             "content": {
-                "message": "<?= $block->escapeJsQuote($block->getMessage()) ?>",
-                "dismiss": "<?= $block->escapeJsQuote($block->getButtonText()) ?>"
+                "dismiss": "<?= $block->escapeJsQuote($block->getButtonText()) ?>",
+            <?php if ($block->showLink() == 'true' && $block->getLinkText()): ?>
+                "link": "<?= $block->escapeJsQuote($block->getLinkText()) ?>",
+            <?php endif; ?>
+                "message": "<?= $block->escapeJsQuote($block->getMessage()) ?>"
             },
             "cookie": {
-                "domain": "",
-                "secure": true
+                "name": "<?= $block->escapeJsQuote($block->getCookieName()) ?>",
+                "path": "<?= $block->escapeJsQuote($block->getCookiePath()) ?>",
+                "domain": "<?= $block->escapeJsQuote($block->getCookieDomain()) ?>",
+                "expiry": <?= $block->escapeJsQuote($block->getCookieExpiry()) ?>,
+                "secure": <?= $block->escapeJsQuote($block->isCookieSecure()) ?>
             }
         });
     </script>
