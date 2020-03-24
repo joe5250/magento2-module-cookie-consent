@@ -13,6 +13,8 @@
 "Include Link","Include Link"
 "If enabled, the message will include a link to https://www.cookiesandyou.com.","If enabled, the message will include a link to https://www.cookiesandyou.com."
 "Link Text","Link Text"
+"Select CMS Page","Select CMS Page"
+"If a page is selected, it will override the default URL.","If a page is selected, it will override the default URL."
 "Cookie Name","Cookie Name"
 "Name of the cookie that keeps track of users choice.","Name of the cookie that keeps track of users choice."
 "Cookie Path","Cookie Path"

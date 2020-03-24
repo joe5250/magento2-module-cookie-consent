@@ -29,6 +29,7 @@ interface ConfigInterface
     const XML_PATH_COOKIE_CONSENT_BUTTON_TEXT = 'cookie_consent/custom_text/button_text';
     const XML_PATH_COOKIE_CONSENT_INCLUDE_LINK = 'cookie_consent/custom_text/include_link';
     const XML_PATH_COOKIE_CONSENT_LINK_TEXT = 'cookie_consent/custom_text/link_text';
+    const XML_PATH_COOKIE_CONSENT_CMS_PAGE = 'cookie_consent/custom_text/cms_page';
     const XML_PATH_COOKIE_CONSENT_COOKIE_NAME = 'cookie_consent/cookie/name';
     const XML_PATH_COOKIE_CONSENT_COOKIE_PATH = 'cookie_consent/cookie/path';
     const XML_PATH_COOKIE_CONSENT_COOKIE_DOMAIN = 'cookie_consent/cookie/domain';
@@ -157,6 +158,18 @@ interface ConfigInterface
         $scope = ScopeInterface::SCOPE_STORES,
         $scopeCode = null
     ): ?string;
+
+    /**
+     * Returns the configured CMS page ID value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return int|null
+     */
+    public function getCmsPage(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): ?int;
 
     /**
      * Returns the configured cookie name value.
