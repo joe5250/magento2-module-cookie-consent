@@ -21,9 +21,11 @@ interface ConfigInterface
      * Configuration constants.
      */
     const XML_PATH_COOKIE_CONSENT_ENABLED = 'cookie_consent/general/enabled';
+    const XML_PATH_COOKIE_CONSENT_USE_TRANSITIONS = 'cookie_consent/general/use_transition';
+    const XML_PATH_COOKIE_CONSENT_POSITION = 'cookie_consent/general/position';
+    const XML_PATH_COOKIE_CONSENT_LAYOUT = 'cookie_consent/general/layout';
     const XML_PATH_COOKIE_CONSENT_MESSAGE = 'cookie_consent/general/message';
     const XML_PATH_COOKIE_CONSENT_BUTTON_TEXT = 'cookie_consent/general/button_text';
-    const XML_PATH_COOKIE_CONSENT_USE_TRANSITIONS = 'cookie_consent/general/use_transition';
     const XML_PATH_COOKIE_CONSENT_COOKIE_NAME = 'cookie_consent/cookie/name';
     const XML_PATH_COOKIE_CONSENT_COOKIE_PATH = 'cookie_consent/cookie/path';
     const XML_PATH_COOKIE_CONSENT_COOKIE_DOMAIN = 'cookie_consent/cookie/domain';
@@ -58,6 +60,65 @@ interface ConfigInterface
         $scope = ScopeInterface::SCOPE_STORES,
         $scopeCode = null
     ): bool;
+
+    /**
+     * Retrieves the module's use transition status.
+     *
+     * @param int|string|\Magento\Store\Model\Store $store
+     * @return bool
+     */
+    public function hasTransition(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): bool;
+
+    /**
+     * Returns the configured position value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return string|null
+     */
+    public function getPosition(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string;
+
+    /**
+     * Returns the configured layout value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return string|null
+     */
+    public function getLayout(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string;
+
+    /**
+     * Returns the configured message value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return string|null
+     */
+    public function getMessage(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): ?string;
+
+    /**
+     * Returns the configured button text value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return string|null
+     */
+    public function getButtonText(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): ?string;
 
     /**
      * Returns the configured cookie name value.
@@ -115,41 +176,6 @@ interface ConfigInterface
      * @return bool
      */
     public function isCookieSecure(
-        $scope = ScopeInterface::SCOPE_STORES,
-        $scopeCode = null
-    ): bool;
-
-    /**
-     * Returns the configured message value.
-     *
-     * @param string $scope
-     * @param null|string|\Magento\Store\Model\Store $scopeCode
-     * @return string|null
-     */
-    public function getMessage(
-        $scope = ScopeInterface::SCOPE_STORES,
-        $scopeCode = null
-    ): ?string;
-
-    /**
-     * Returns the configured button text value.
-     *
-     * @param string $scope
-     * @param null|string|\Magento\Store\Model\Store $scopeCode
-     * @return string|null
-     */
-    public function getButtonText(
-        $scope = ScopeInterface::SCOPE_STORES,
-        $scopeCode = null
-    ): ?string;
-
-    /**
-     * Retrieves the module's use transition status.
-     *
-     * @param int|string|\Magento\Store\Model\Store $store
-     * @return bool
-     */
-    public function hasTransition(
         $scope = ScopeInterface::SCOPE_STORES,
         $scopeCode = null
     ): bool;

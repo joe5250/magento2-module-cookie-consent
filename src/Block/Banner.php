@@ -78,6 +78,52 @@ class Banner extends Template
     }
 
     /**
+     * Returns the configured use transition value.
+     *
+     * @return bool
+     */
+    public function hasTransition(): bool
+    {
+        return $this->getConfig()
+            ->hasTransition('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the configured position value.
+     *
+     * @return string
+     */
+    public function getPosition(): string
+    {
+        $position = $this->getConfig()->getPosition('store', $this->storeCode);
+
+        return ($position != 'top-static') ? $position : 'top';
+    }
+
+    /**
+     * Returns the configured layout value.
+     *
+     * @return string
+     */
+    public function getLayout(): string
+    {
+        return $this->getConfig()
+            ->getLayout('store', $this->storeCode);
+    }
+
+    /**
+     * Returns the static value.
+     *
+     * @return string
+     */
+    public function isStatic(): string
+    {
+        $position = $this->getConfig()->getPosition('store', $this->storeCode);
+
+        return ($position != 'top-static') ? 'false' : 'true';
+    }
+
+    /**
      * Returns the configured message value.
      *
      * @return string|null
@@ -97,17 +143,6 @@ class Banner extends Template
     {
         return $this->getConfig()
             ->getButtonText('store', $this->storeCode);
-    }
-
-    /**
-     * Returns the configured use transition value.
-     *
-     * @return bool
-     */
-    public function hasTransition(): bool
-    {
-        return $this->getConfig()
-            ->hasTransition('store', $this->storeCode);
     }
 
     /**

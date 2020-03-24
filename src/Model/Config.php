@@ -68,6 +68,52 @@ class Config implements ConfigInterface
     /**
      * {@inheritdoc}
      */
+    public function hasTransition(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): bool {
+        return (bool) $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_USE_TRANSITIONS,
+            $scope,
+            $scopeCode
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPosition(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string {
+        $position = $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_POSITION,
+            $scope,
+            $scopeCode
+        );
+
+        return $position ?? 'bottom';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLayout(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string {
+        $layout = $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_LAYOUT,
+            $scope,
+            $scopeCode
+        );
+
+        return $layout ?? 'block';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getMessage(
         $scope = ScopeInterface::SCOPE_STORES,
         $scopeCode = null
@@ -88,20 +134,6 @@ class Config implements ConfigInterface
     ): ?string {
         return $this->scopeConfig->getValue(
             self::XML_PATH_COOKIE_CONSENT_BUTTON_TEXT,
-            $scope,
-            $scopeCode
-        );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function hasTransition(
-        $scope = ScopeInterface::SCOPE_STORES,
-        $scopeCode = null
-    ): bool {
-        return (bool) $this->scopeConfig->getValue(
-            self::XML_PATH_COOKIE_CONSENT_USE_TRANSITIONS,
             $scope,
             $scopeCode
         );

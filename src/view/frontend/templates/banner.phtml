@@ -28,8 +28,9 @@
                     "text": "<?= $block->escapeHtml($block->getButtonTextColor()) ?>"
                 }
             },
-            "theme": "classic",
-            "position": "bottom-left",
+            "theme": "<?= $block->escapeJsQuote($block->getLayout()) ?>",
+            "position": "<?= $block->escapeJsQuote($block->getPosition()) ?>",
+            "static": <?= $block->escapeJsQuote($block->isStatic()) ?>,
             "showLink": false,
             "content": {
                 "message": "<?= $block->escapeJsQuote($block->getMessage()) ?>",
