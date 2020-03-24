@@ -114,6 +114,22 @@ class Config implements ConfigInterface
     /**
      * {@inheritdoc}
      */
+    public function getComplianceType(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string {
+        $type = $this->scopeConfig->getValue(
+            self::XML_PATH_COOKIE_CONSENT_COMPLIANCE_TYPE,
+            $scope,
+            $scopeCode
+        );
+
+        return $type ?? 'info';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getMessage(
         $scope = ScopeInterface::SCOPE_STORES,
         $scopeCode = null

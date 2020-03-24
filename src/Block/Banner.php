@@ -112,6 +112,17 @@ class Banner extends Template
     }
 
     /**
+     * Returns the configured compliance value.
+     *
+     * @return string
+     */
+    public function getComplianceType(): string
+    {
+        return $this->getConfig()
+            ->getComplianceType('store', $this->storeCode);
+    }
+
+    /**
      * Returns the static value.
      *
      * @return string
@@ -148,12 +159,12 @@ class Banner extends Template
     /**
      * Returns the configured show link value.
      *
-     * @return bool
+     * @return string
      */
-    public function showLink(): bool
+    public function showLink(): string
     {
-        return $this->getConfig()
-            ->showLink('store', $this->storeCode);
+        return ($this->getConfig()->showLink('store', $this->storeCode))
+            ? 'true' : 'false';
     }
 
     /**

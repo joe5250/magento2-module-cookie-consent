@@ -24,6 +24,7 @@ interface ConfigInterface
     const XML_PATH_COOKIE_CONSENT_USE_TRANSITIONS = 'cookie_consent/general/use_transition';
     const XML_PATH_COOKIE_CONSENT_POSITION = 'cookie_consent/general/position';
     const XML_PATH_COOKIE_CONSENT_LAYOUT = 'cookie_consent/general/layout';
+    const XML_PATH_COOKIE_CONSENT_COMPLIANCE_TYPE = 'cookie_consent/general/compliance_type';
     const XML_PATH_COOKIE_CONSENT_MESSAGE = 'cookie_consent/custom_text/message';
     const XML_PATH_COOKIE_CONSENT_BUTTON_TEXT = 'cookie_consent/custom_text/button_text';
     const XML_PATH_COOKIE_CONSENT_INCLUDE_LINK = 'cookie_consent/custom_text/include_link';
@@ -94,6 +95,18 @@ interface ConfigInterface
      * @return string|null
      */
     public function getLayout(
+        $scope = ScopeInterface::SCOPE_STORES,
+        $scopeCode = null
+    ): string;
+
+    /**
+     * Returns the configured compliance type value.
+     *
+     * @param string $scope
+     * @param null|string|\Magento\Store\Model\Store $scopeCode
+     * @return string|null
+     */
+    public function getComplianceType(
         $scope = ScopeInterface::SCOPE_STORES,
         $scopeCode = null
     ): string;

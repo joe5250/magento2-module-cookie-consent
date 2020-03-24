@@ -30,15 +30,12 @@
             },
             "theme": "<?= $block->escapeJsQuote($block->getLayout()) ?>",
             "position": "<?= $block->escapeJsQuote($block->getPosition()) ?>",
+            "type": "<?= $block->escapeJsQuote($block->getComplianceType()) ?>",
             "static": <?= $block->escapeJsQuote($block->isStatic()) ?>,
-        <?php if ($block->showLink()): ?>
-            "showLink": true,
-        <?php else: ?>
-            "showLink": false,
-        <?php endif; ?>
+            "showLink": "<?= $block->escapeJsQuote($block->showLink()) ?>",
             "content": {
                 "dismiss": "<?= $block->escapeJsQuote($block->getButtonText()) ?>",
-            <?php if ($block->showLink() && $block->getLinkText()): ?>
+            <?php if ($block->showLink() == 'true' && $block->getLinkText()): ?>
                 "link": "<?= $block->escapeJsQuote($block->getLinkText()) ?>",
             <?php endif; ?>
                 "message": "<?= $block->escapeJsQuote($block->getMessage()) ?>"

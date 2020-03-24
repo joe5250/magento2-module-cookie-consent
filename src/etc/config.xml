@@ -15,6 +15,7 @@
                 <use_transition>1</use_transition>
                 <position>bottom</position>
                 <layout>block</layout>
+                <compliance_type>info</compliance_type>
             </general>
             <custom_text>
                 <message>This website uses cookies to ensure you get the best experience on our website.</message>
